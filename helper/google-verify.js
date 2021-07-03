@@ -14,7 +14,6 @@ const client = new OAuth2Client( process.env.CLIENT_ID );
   const payload = ticket.getPayload();
   const userid = payload['sub'];
 
-  console.log(payload);
 
   const { name, email, picture } = payload;
   

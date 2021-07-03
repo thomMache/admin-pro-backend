@@ -4,8 +4,9 @@ Path:'/api/login'
 
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { login, googleSingIn } = require('../controllers/auth');
+const { login, googleSingIn, renewToken } = require('../controllers/auth');
 const { validarCampos } = require('../middleware/validar-campos');
+const { validarJWT } = require('../middleware/validar-jwt');
 
 const router = Router();
 
@@ -29,6 +30,13 @@ router.post('/google',
 ],
 googleSingIn
 )
+
+
+router.get('/renew',
+validarJWT,
+renewToken
+)
+
 
 
 module.exports = router;
